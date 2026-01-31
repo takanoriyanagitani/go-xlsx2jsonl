@@ -1,0 +1,37 @@
+version: "2"
+
+linters:
+
+  default: all
+
+  disable:
+    - wsl
+    - wsl_v5
+    - ireturn
+    - nlreturn
+    - exhaustruct
+    - revive
+    - staticcheck
+    - wrapcheck
+
+  settings:
+
+    depguard:
+      rules:
+        main:
+          files:
+            - $all
+          allow:
+            - $gostd
+            - github.com/takanoriyanagitani/go-xlsx2jsonl
+            - github.com/xuri/excelize/v2
+          deny:
+            - pkg: unsafe
+            - pkg: C
+
+    nolintlint:
+      require-specific: true
+
+issues:
+  nolint-exclude:
+    - funlen
